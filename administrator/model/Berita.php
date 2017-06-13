@@ -7,7 +7,12 @@
 include_once 'Model.php';
 class Berita extends Model
 {
-	
+	public $id_berita;
+	public $tanggal;
+	public $judul;
+	public $isi;
+	public $id_kategori;
+
 	public function ambilBerita()
 	{
 		$query = $this->db->prepare("SELECT * FROM berita");
@@ -17,7 +22,30 @@ class Berita extends Model
     	return $data;
 	}
 
+	public function setBerita($tanggal,$judul,$isi,$id_kategori)
+	{
+				try
+		  {
+		   $stmt = $this->db->prepare("INSERT INTO berita(tanggal,judul,isi,id_kategori) VALUES(:tanggal, :judul, :isi, :id_kategori)");
+		   $stmt->bindparam(":tanggal",$tanggal);
+		   $stmt->bindparam(":judul",$judul);
+		   $stmt->bindparam(":isi",$isi);
+		   $stmt->bindparam(":id_kategori",$id_kategori);
+		   $stmt->execute();
+		   return true;
+		  }
+		  catch(PDOException $e)
+		  {
+		   echo $e->getMessage(); 
+		   return false;
+		  }
+
+	}
+
+
+
 }
+
 
 
  ?>
