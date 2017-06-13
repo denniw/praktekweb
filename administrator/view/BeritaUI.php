@@ -30,5 +30,18 @@ class BeritaUI extends View
 		include_once 'pages/pesansukses.php';
 		$this->end();
 	}
+	public function tampilFormEdit(){
+		include_once 'controller/BeritaManager.php';
+		$bm = new BeritaManager();
+		$data = $bm ->getDataUntukPerubahan();
+		$data_berita = $data['berita'];
+		$data_kategori = $data['kategori'];
+		include_once 'pages/formeditberita.php';
+		$this->end();
+
+	}
+	public function aksiUbahBerita(){
+
+	}
 }
  ?>

@@ -24,5 +24,23 @@ class BeritaManager extends Controller
 		$pesan = $mberita->setBerita($tanggal,$judul,$isi,$id_kategori);
 		return $pesan;
 	}
+	public function getDataUntukPerubahan(){
+		$id = $_GET['id'];
+		include_once 'model/Berita.php';
+		include_once 'model/Kategori.php';
+		$mb = new Berita();
+		$kat = new Kategori();
+		$data['berita'] = $mb-> ambilBeritaSpesifik($id);
+		$data['kategori'] = $kat->getDaftarKategori();
+
+		return $data;
+
+	}
+	public function ubahBerita(){
+		$id = $_GET['id'];
+		$tanggal = date('Y-m-d');
+		$judul = $_POST['judul'];
+
+	}
 }
  ?>

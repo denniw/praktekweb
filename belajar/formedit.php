@@ -41,7 +41,7 @@ catch(PDOException $e) {
 
  ?>
 
-<form action="aksi_ubah.php?id=2" method="post" accept-charset="utf-8">
+<form action="aksi_ubah.php?id=<?php echo $id_berita['id']; ?>" method="POST" accept-charset="utf-8">
 		<label for="judul">Judul</label><br>
 			<input type="text" name="judul" value="<?php echo $data['judul']; ?>"><br>
 		<label for="isi">Isi</label><br>

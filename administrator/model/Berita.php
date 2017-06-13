@@ -41,7 +41,23 @@ class Berita extends Model
 		  }
 
 	}
+	public function ambilBeritaSpesifik($id){
+		try {
+	$stmt = $this->db->prepare("SELECT * FROM berita WHERE id_berita=:id");
+	$stmt->bindparam(":id",$id);
+	$stmt->execute();
+	$data = $stmt->fetch();
+	return $data;
+}
+catch(PDOException $e) {
+	echo $e->getMessage(); 
+	return false;
+}
 
+	}
+	public function ubahBerita($id_berita,$tanggal,$judul,$isi,$id_kategori){
+
+	}
 
 
 }
